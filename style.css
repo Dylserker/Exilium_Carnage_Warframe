@@ -92,9 +92,9 @@ body {
 }
 
 .hero-banner {
-    background-image: url('https://via.placeholder.com/1920x500');
+    background-image: url(img/Banner.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     height: 300px;
     display: flex;
@@ -103,6 +103,7 @@ body {
     text-align: center;
     color: #ffffff;
     position: relative;
+    border: darkred solid 5px;
 }
 
 .hero-banner::before {
@@ -374,6 +375,59 @@ body {
 /* Afficher la modale */
 .modal.show {
     display: flex;
+}
+
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+    background-image: url("img/bgs.png");
+    background-attachment: fixed;
+}
+.card h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: none;
+}
+
+.btn.submit-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn.submit-btn:hover {
+    background-color: #c0392b;
 }
 
 /* Footer */

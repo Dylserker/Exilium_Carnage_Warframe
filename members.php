@@ -1,7 +1,5 @@
 <?php
-require 'includes/database.php';
-require 'php/signup.php';
-require 'php/login.php';
+require './includes/database.php';
 
 try {
     $stmt = $pdo->query("SELECT first_name, last_name, email FROM users");
@@ -15,7 +13,7 @@ try {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Liste des Membres - Exilium Carnage</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -27,7 +25,7 @@ try {
             <li><a href="index.php">Accueil</a></li>
             <li><a href="members.php">Membres</a></li>
             <li><a href="events.php">Evènements</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="contact.php">Contact</a></li>
         </ul>
         <?php
         if (isset($_SESSION['user_name'])) {

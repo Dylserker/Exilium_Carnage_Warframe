@@ -38,7 +38,7 @@ try {
             <li><a href="index.php">Accueil</a></li>
             <li><a href="members.php">Membres</a></li>
             <li><a href="events.php">Evènements</a></li>
-            <li><a href="#contact">Contactes</a></li>
+            <li><a href="contact.php">Contactes</a></li>
         </ul>
         <?php
         session_start();
@@ -65,7 +65,7 @@ try {
             <h2>Membres importants</h2>
             <div class="cards-container">
                 <div class="card">
-                    <img src="https://via.placeholder.com/150" alt="Membre 1">
+                    <img src="img/Operator.jpg" alt="Membre 1">
                     <h3>Dylserker</h3>
                     <p>Hérault du Chaos: (Main Ash Prime) Le coeur sur la main prêt à aider ses membres tout dans la rigolade.</p>
                 </div>
@@ -117,7 +117,7 @@ try {
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2>Connexion</h2>
-            <form action="process_login.php" method="POST" class="login-form">
+            <form action="php/login.php" method="POST" class="login-form">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Votre email" required>
 
@@ -134,10 +134,10 @@ try {
             <div class="footer-menu">
                 <h3>Menu</h3>
                 <ul>
-                    <li><a href="#home">Accueil</a></li>
-                    <li><a href="#members">Membres</a></li>
-                    <li><a href="#events">Evènements</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="members.php">Membres</a></li>
+                    <li><a href="events.php">Evènements</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
             <!-- Réseaux Sociaux -->
