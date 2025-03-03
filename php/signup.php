@@ -93,26 +93,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .form-container button:hover {
                 background-color: #cc0000;
             }
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #1f2937;
+                padding: 10px 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            }
+
+            .navbar .logo {
+                font-size: 24px;
+                font-weight: bold;
+                color: #a90912;
+            }
+
+            .nav-links {
+                list-style: none;
+                display: flex;
+                gap: 15px;
+                margin: 0;
+                padding: 0;
+            }
+
+            .nav-links li {
+                position: relative;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: #ffffff;
+                font-size: 16px;
+                transition: color 0.3s;
+            }
+
+            .nav-links a:hover {
+                color: #a90912;
+            }
+
+            .nav-links a::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 2px;
+                background: #a90912;
+                transition: width 0.3s;
+                margin: auto;
+            }
+
+            .nav-links a:hover::after {
+                width: 100%;
+            }
         </style>
     </head>
     <body>
-    <div class="form-container">
-        <h1>Inscription</h1>
-        <form action="signup.php" method="POST">
-            <label for="first-name">Prénom :</label>
-            <input type="text" id="first-name" name="first-name" placeholder="Votre prénom" required>
+        <div class="form-container">
+            <h1>Inscription</h1>
+            <form action="signup.php" method="POST">
+                <label for="first-name">Prénom :</label>
+                <input type="text" id="first-name" name="first-name" placeholder="Votre prénom" required>
 
-            <label for="last-name">Nom :</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Votre nom" required>
+                <label for="last-name">Nom :</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Votre nom" required>
 
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" placeholder="Votre email" required>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" placeholder="Votre email" required>
 
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
 
-            <button type="submit">S'inscrire</button>
-        </form>
-    </div>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
     </body>
 </html>

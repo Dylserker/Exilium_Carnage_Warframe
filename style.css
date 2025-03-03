@@ -372,7 +372,6 @@ body {
     color: #ccc;
 }
 
-/* Afficher la modale */
 .modal.show {
     display: flex;
 }
@@ -430,7 +429,6 @@ body {
     background-color: #c0392b;
 }
 
-/* Footer */
 .footer {
     background-color: #1f2937;
     color: #f4f4f4;
@@ -443,9 +441,9 @@ body {
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 40px; /* Espace entre les colonnes */
+    gap: 40px;
     max-width: 1200px;
-    margin: 0 auto; /* Centrer le contenu */
+    margin: 0 auto;
 }
 
 .footer-menu,
@@ -548,7 +546,7 @@ body {
         width: 100%;
     }
     .footer-container {
-        flex-direction: column; /* Empile les colonnes */
+        flex-direction: column;
         align-items: center;
     }
 }

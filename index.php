@@ -38,7 +38,7 @@ try {
             <li><a href="index.php">Accueil</a></li>
             <li><a href="members.php">Membres</a></li>
             <li><a href="events.php">Evènements</a></li>
-            <li><a href="contact.php">Contactes</a></li>
+            <li><a href="contact.php">Contacts</a></li>
         </ul>
         <?php
         session_start();
@@ -72,7 +72,7 @@ try {
                 <div class="card">
                     <img src="https://via.placeholder.com/150" alt="Membre 2">
                     <h3>Cluz13</h3>
-                    <p>Main d'Exilium: (Main Nyx Prime) La force tranquille avec un côté chill et bienvaillant.</p>
+                    <p>Main d'Exilium: (Main Lavos Prime) La force tranquille avec un côté chill et bienvaillant.</p>
                 </div>
             </div>
         </section>
@@ -88,7 +88,6 @@ try {
         </section>
     </section>
 
-    <!-- Formulaire d'inscription (modale) -->
     <div id="signup-modal" class="modal hidden">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
