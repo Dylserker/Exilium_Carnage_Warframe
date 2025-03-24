@@ -8,9 +8,9 @@ function App() {
         <Navbar />
         <main>
           <section className="hero">
-            <h1>Welcome to Our Website</h1>
-            <p>Your trusted partner in digital solutions</p>
-            <button className="cta-button">Get Started</button>
+            <h1>Bienvenue sur Exilium Carnage</h1>
+            <p>Si vous avez un esprit de famille et de coopération <br />
+              avec un soupçon de d'humours on vous accueil à bras ouvert</p>
           </section>
 
           <section className="features">
