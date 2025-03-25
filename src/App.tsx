@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Contact from './components/Contact';
 import Card from './components/Card';
 import Footer from './components/Footer';
-import operatorImage from './assets/Operator.jpg';
 import Event from './components/Event';
 import Auth from './components/Auth';
+import Profile from './components/Profile';
+import operatorImage from './assets/Operator.jpg';
 import './App.css';
 
 const Home = () => (
@@ -32,16 +33,20 @@ const Home = () => (
 );
 
 function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [username, setUsername] = useState<string | null>(null);
+
     return (
         <Router>
             <div className="App">
-                <Navbar />
+                <Navbar isLoggedIn={isLoggedIn} username={username} />
                 <main>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/event" element={<Event />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/auth" element={<Auth />} />
+                        <Route path="/profile" element={<Profile />} />
                     </Routes>
                 </main>
                 <Footer />
