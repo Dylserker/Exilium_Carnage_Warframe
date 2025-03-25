@@ -1,14 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import emblemeEc from '../assets/Embleme_ec.png';
 
 const Navbar = () => {
     return (
         <nav className="navbar">
-            <div className="logo">Exilium Carnage</div>
+            <div className="logo">
+                <img src={emblemeEc} alt="Exilium Carnage" className="logo-image" />
+            </div>
             <div className="nav-links">
-                <a href="#home">Accueil</a>
-                <a href="#event">Évènement</a>
-                <a href="#member">Liste des membres</a>
-                <a href="#contact">Contact</a>
+                <Link to="/">Accueil</Link>
+                <Link to="/event">Évènement</Link>
+                <Link to="/member">Liste des membres</Link>
+                <Link to="/contact">Contact</Link>
             </div>
         </nav>
     );
