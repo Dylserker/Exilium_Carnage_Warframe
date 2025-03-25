@@ -6,6 +6,7 @@ import Card from './components/Card';
 import Footer from './components/Footer';
 import operatorImage from './assets/Operator.jpg';
 import Event from './components/Event';
+import Auth from './components/Auth';
 import './App.css';
 
 const Home = () => (
@@ -40,6 +41,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/event" element={<Event />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="/auth" element={<Auth />} />
                     </Routes>
                 </main>
                 <Footer />
