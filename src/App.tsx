@@ -45,8 +45,14 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/event" element={<Event />} />
                         <Route path="/contact" element={<Contact />} />
-                        <Route path="/auth" element={<Auth />} />
-                        <Route path="/profile" element={<Profile />} />
+                        <Route
+                            path="/auth"
+                            element={<Auth setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
+                        />
+                        <Route
+                            path="/profile"
+                            element={<Profile username={username} />}
+                        />
                     </Routes>
                 </main>
                 <Footer />
