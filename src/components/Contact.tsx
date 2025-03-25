@@ -7,17 +7,40 @@ const Contact = () => {
         message: ''
     });
 
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Ici vous pourrez ajouter la logique d'envoi du formulaire
-    };
+    const [isLoading, setIsLoading] = useState(false);
+    const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
+    };
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setStatus('idle');
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (!response.ok) throw new Error('Failed to send message');
+
+            setFormData({ name: '', email: '', message: '' });
+            setStatus('success');
+        } catch (error) {
+            console.error('Error sending message:', error);
+            setStatus('error');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -56,8 +79,16 @@ const Contact = () => {
                         required
                     />
                 </div>
-                <button type="submit" className="submit-button">Envoyer</button>
+                <button type="submit" className="submit-button" disabled={isLoading}>
+                    {isLoading ? 'Envoi en cours...' : 'Envoyer'}
+                </button>
             </form>
+            {status === 'success' && (
+                <div className="alert success">Message envoyé avec succès !</div>
+            )}
+            {status === 'error' && (
+                <div className="alert error">Échec de l'envoi. Veuillez réessayer.</div>
+            )}
         </section>
     );
 };

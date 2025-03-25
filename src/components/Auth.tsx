@@ -12,7 +12,6 @@ const Auth = ({ setIsLoggedIn, setUsername }: AuthProps) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Simulate login
         setIsLoggedIn(true);
         setUsername(loginData.username);
         navigate('/profile');
