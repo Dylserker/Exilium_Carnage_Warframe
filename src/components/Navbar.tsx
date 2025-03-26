@@ -2,12 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import emblemeEc from '../assets/Embleme_ec.png';
 
-interface NavbarProps {
-    isLoggedIn: boolean;
-    username: string | null;
-}
-
-const Navbar = ({ isLoggedIn, username }: NavbarProps) => {
+const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="logo">
@@ -18,11 +13,6 @@ const Navbar = ({ isLoggedIn, username }: NavbarProps) => {
                 <Link to="/event">Évènement</Link>
                 <Link to="/member">Liste des membres</Link>
                 <Link to="/contact">Contact</Link>
-                {isLoggedIn ? (
-                    <Link to="/profile">{username}</Link>
-                ) : (
-                    <Link to="/auth">Connexion</Link>
-                )}
             </div>
         </nav>
     );
