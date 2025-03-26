@@ -3,6 +3,22 @@ const bcrypt = require('bcrypt');
 const pool = require('../config/db');
 const router = express.Router();
 
+router.post('/register', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        await pool.execute(
+            'INSERT INTO users (username, password) VALUES (?, ?)',
+            [username, hashedPassword]
+        );
+
+        res.json({ success: true });
+    } catch (error) {
+        res.status(400).json({ error: 'Erreur lors de l\'inscription' });
+    }
+});
+
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;

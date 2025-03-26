@@ -5,6 +5,7 @@ import Contact from './components/Contact';
 import Card from './components/Card';
 import Footer from './components/Footer';
 import Event from './components/Event';
+import Auth from './components/Auth';  // Add this line
 import operatorImage from './assets/Operator.jpg';
 import './App.css';
 
@@ -40,6 +41,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/event" element={<Event />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="/auth" element={<Auth />} />
                     </Routes>
                 </main>
                 <Footer />
