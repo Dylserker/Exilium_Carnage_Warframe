@@ -5,7 +5,7 @@ import Contact from './components/Contact';
 import Card from './components/Card';
 import Footer from './components/Footer';
 import Event from './components/Event';
-import Auth from './components/Auth';  // Add this line
+import Auth from './components/Auth';
 import operatorImage from './assets/Operator.jpg';
 import './App.css';
 
