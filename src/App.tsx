@@ -6,6 +6,7 @@ import Card from './components/Card';
 import Footer from './components/Footer';
 import Event from './components/Event';
 import Auth from './components/Auth';
+import { AuthProvider } from './context/AuthContext';
 import operatorImage from './assets/Operator.jpg';
 import './App.css';
 
@@ -34,18 +35,20 @@ const Home = () => (
 function App() {
     return (
         <Router>
-            <div className="App">
-                <Navbar />
-                <main>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/event" element={<Event />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/auth" element={<Auth />} />
-                    </Routes>
-                </main>
-                <Footer />
-            </div>
+            <AuthProvider>
+                <div className="App">
+                    <Navbar />
+                    <main>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/event" element={<Event />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/auth" element={<Auth />} />
+                        </Routes>
+                    </main>
+                    <Footer />
+                </div>
+            </AuthProvider>
         </Router>
     );
 }

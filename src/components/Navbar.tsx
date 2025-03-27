@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import emblemeEc from '../assets/Embleme_ec.png';
+import { AuthContext } from '../context/AuthContext';
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <nav className="navbar">
             <div className="logo">
@@ -13,7 +16,11 @@ const Navbar = () => {
                 <Link to="/event">Évènement</Link>
                 <Link to="/member">Liste des membres</Link>
                 <Link to="/contact">Contact</Link>
-                <Link to="/auth">Connexion / Inscription</Link>
+                {user ? (
+                    <Link to="/profile">{user.username}</Link>
+                ) : (
+                    <Link to="/auth">Connexion / Inscription</Link>
+                )}
             </div>
         </nav>
     );
