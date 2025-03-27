@@ -3,6 +3,15 @@ const bcrypt = require('bcrypt');
 const pool = require('../config/db');
 const router = express.Router();
 
+router.get('/test-db', async (req, res) => {
+    try {
+        const [rows] = await pool.execute('SELECT 1');
+        res.json({ success: true, message: 'Connexion à la base de données réussie' });
+    } catch (error) {
+        res.status(500).json({ error: 'Erreur de connexion à la base de données' });
+    }
+});
+
 router.post('/register', async (req, res) => {
     try {
         const { username, password } = req.body;
