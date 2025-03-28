@@ -6,6 +6,7 @@ import Card from './components/Card';
 import Footer from './components/Footer';
 import Event from './components/Event';
 import Auth from './components/Auth';
+import Members from './components/Members';
 import { AuthProvider } from './context/AuthContext';
 import operatorImage from './assets/Operator.jpg';
 import './App.css';
@@ -42,6 +43,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/event" element={<Event />} />
+                            <Route path="/member" element={<Members />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/auth" element={<Auth />} />
                         </Routes>
