@@ -1,53 +1,75 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import './MemberList.css';
 
 interface Member {
     id: number;
     username: string;
     role: string;
     joinDate: string;
+    game: string;
+    discordId: string;
 }
 
+const membersList: Member[] = [
+    {
+        id: 1,
+        username: "Dylserker",
+        role: "admin",
+        joinDate: "2024-01-01",
+        game: "Warframe",
+        discordId: "Dylserker#9772"
+    },
+    {
+        id: 2,
+        username: "Cluz1312",
+        role: "admin",
+        joinDate: "2024-01-02",
+        game: "Warframe",
+        discordId: "Cluz1312#2640"
+    }
+];
+
 const Members = () => {
-    const [members, setMembers] = useState<Member[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchMembers = async () => {
-            try {
-                const response = await fetch('http://localhost:3001/api/members', {
-                    credentials: 'include'
-                });
+        if (!user) {
+            navigate('/auth');
+        }
+    }, [user, navigate]);
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch members');
-                }
-
-                const data = await response.json();
-                setMembers(data);
-            } catch (err) {
-                setError('Une erreur est survenue lors du chargement des membres');
-                console.error('Error fetching members:', err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchMembers();
-    }, []);
-
-    if (loading) return <div>Chargement...</div>;
-    if (error) return <div className="error">{error}</div>;
+    if (!user) {
+        return null;
+    }
 
     return (
-        <div className="members-container">
-            <h1>Liste des Membres</h1>
+        <div className="member-list-container">
+            <h1 className="member-list-title">Liste des Membres</h1>
+
+            {user?.role === 'admin' && (
+                <button className="add-member-btn">Ajouter un membre</button>
+            )}
+
             <div className="members-grid">
-                {members.map((member) => (
+                {membersList.map(member => (
                     <div key={member.id} className="member-card">
-                        <h2>{member.username}</h2>
-                        <p>Rôle: {member.role}</p>
-                        <p>Membre depuis: {new Date(member.joinDate).toLocaleDateString()}</p>
+                        <h3 className="member-name">{member.username}</h3>
+                        <div className="member-info">
+                            <p><strong>Rôle:</strong> {member.role}</p>
+                            <p><strong>Jeu:</strong> {member.game}</p>
+                            <p><strong>Discord:</strong> {member.discordId}</p>
+                            <p><strong>Inscrit le:</strong> {new Date(member.joinDate).toLocaleDateString()}</p>
+                        </div>
+                        {user?.role === 'admin' && (
+                            <div className="admin-actions">
+                                <button className="delete-btn" onClick={() => window.confirm('Cette fonction est désactivée')}>
+                                    Supprimer
+                                </button>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>

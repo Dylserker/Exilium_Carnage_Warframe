@@ -1,81 +1,66 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import './MemberList.css';
 
 interface Member {
     id: number;
     username: string;
     role: string;
     joinDate: string;
+    game: string;
+    discordId: string;
 }
 
+const membersList: Member[] = [
+    {
+        id: 1,
+        username: "Dylserker",
+        role: "admin",
+        joinDate: "2024-01-01",
+        game: "Lost Ark",
+        discordId: "Dylserker#0001"
+    },
+    {
+        id: 2,
+        username: "Aethril",
+        role: "membre",
+        joinDate: "2024-01-02",
+        game: "Lost Ark",
+        discordId: "Aethril#0002"
+    }
+];
+
 const MemberList = () => {
-    const [members, setMembers] = useState<Member[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const fetchMembers = async () => {
-        try {
-            const response = await fetch('http://localhost:3001/api/members', {
-                credentials: 'include'
-            });
-            if (!response.ok) throw new Error('Erreur de chargement');
-            const data = await response.json();
-            setMembers(data);
-        } catch (err) {
-            setError('Erreur de chargement des membres');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const deleteMember = async (memberId: number) => {
-        if (!window.confirm('Voulez-vous vraiment supprimer ce membre ?')) return;
-
-        try {
-            const response = await fetch(`http://localhost:3001/api/members/${memberId}`, {
-                method: 'DELETE',
-                credentials: 'include'
-            });
-            if (response.ok) {
-                setMembers(members.filter(member => member.id !== memberId));
-            }
-        } catch (err) {
-            setError('Erreur lors de la suppression');
-        }
-    };
-
-    useEffect(() => {
-        if (!user) {
-            navigate('/auth');
-            return;
-        }
-        fetchMembers();
-    }, [user, navigate]);
-
-    if (loading) return <div>Chargement...</div>;
-    if (error) return <div className="error">{error}</div>;
+    if (!user) {
+        navigate('/auth');
+        return null;
+    }
 
     return (
-        <div className="member-list">
-            <h1>Liste des Membres</h1>
+        <div className="member-list-container">
+            <h1 className="member-list-title">Liste des Membres</h1>
 
             {user?.role === 'admin' && (
                 <button className="add-member-btn">Ajouter un membre</button>
             )}
 
             <div className="members-grid">
-                {members.map(member => (
+                {membersList.map(member => (
                     <div key={member.id} className="member-card">
-                        <h3>{member.username}</h3>
-                        <p>Rôle: {member.role}</p>
-                        <p>Inscrit le: {new Date(member.joinDate).toLocaleDateString()}</p>
-
+                        <h3 className="member-name">{member.username}</h3>
+                        <div className="member-info">
+                            <p><strong>Rôle:</strong> {member.role}</p>
+                            <p><strong>Jeu:</strong> {member.game}</p>
+                            <p><strong>Discord:</strong> {member.discordId}</p>
+                            <p><strong>Inscrit le:</strong> {new Date(member.joinDate).toLocaleDateString()}</p>
+                        </div>
                         {user?.role === 'admin' && (
                             <div className="admin-actions">
-                                <button onClick={() => deleteMember(member.id)}>
+                                <button className="delete-btn" onClick={() => window.confirm('Cette fonction est désactivée')}>
                                     Supprimer
                                 </button>
                             </div>
