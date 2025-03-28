@@ -15,7 +15,7 @@ const Login: React.FC = () => {
                 body: JSON.stringify({ username, password }),
             });
             if (response.ok) {
-                navigate('/dashboard');
+                navigate('/');
             }
         } catch (error) {
             console.error('Erreur de connexion:', error);

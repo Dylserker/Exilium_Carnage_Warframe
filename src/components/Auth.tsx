@@ -33,7 +33,6 @@ const Auth: React.FC = () => {
         setError(null);
     };
 
-    // Validation du formulaire
     const validateForm = () => {
         if (!formData.username || !formData.password) {
             setError('Veuillez remplir tous les champs obligatoires');
@@ -76,11 +75,9 @@ const Auth: React.FC = () => {
             };
 
         try {
-            // Simulation d'une requête API (à remplacer par votre vraie API)
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             if (isLogin) {
-                // Stockage des données utilisateur (à adapter selon votre backend)
                 localStorage.setItem('user', JSON.stringify({ username: formData.username }));
                 navigate('/dashboard');
             } else {
